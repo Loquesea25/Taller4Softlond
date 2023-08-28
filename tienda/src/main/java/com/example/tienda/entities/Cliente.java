@@ -16,19 +16,23 @@ public class Cliente {
     @Setter(AccessLevel.NONE)
     @Column(name = "idCliente")
     private Long idCliente;
-    @Column(name = "nombreCliente")
+    @Column(name = "nombreCliente", nullable = false)
     private String nombreCliente;
-    @Column(name = "apellidoCliente")
+    @Column(name = "apellidoCliente", nullable = false)
     private String apellidoCliente;
-    @Column(name = "telefonoCliente")
+    @Column(name = "telefonoCliente", nullable = false)
     private String telefonoCliente;
-    @Column(name = "emailCliente")
+    @Column(name = "emailCliente", nullable = false, unique = true)
     private String emailCliente;
 
 
+    /*
+    //Prueba
     @OneToMany
-    @JoinColumn(name = "idCliente")
+    @JoinColumn(name = "idClienteVenta")
     private List<Venta> ventas;
 
+
+     */
 
 }

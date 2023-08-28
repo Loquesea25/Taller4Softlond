@@ -14,8 +14,7 @@ import java.util.List;
 public class VentaServiceIMPL implements IVentaService{
     @Autowired
     private IVentaRepository iVentaRepository;
-    @Value("${descuento.porcentaje}")
-    private double porcentajeDescuento;
+
 
     @Override
     public List<Venta> mostrarVentaPorFecha(Date fechaVenta) {
@@ -37,6 +36,11 @@ public class VentaServiceIMPL implements IVentaService{
     public Venta crearVenta(Venta venta) {
         venta.setCliente(venta.getCliente());
         return this.iVentaRepository.save(venta);
+    }
+
+    @Override
+    public List<Venta> mostrarVentas() {
+        return (List<Venta>) this.iVentaRepository.findAll();
     }
 
 

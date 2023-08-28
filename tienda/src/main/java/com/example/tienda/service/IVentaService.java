@@ -7,11 +7,13 @@ import java.util.Date;
 import java.util.List;
 
 public interface IVentaService {
+
     public List<Venta> mostrarVentaPorFecha(Date fechaVenta);
     public List<Venta> mostrarVentaPorCliente(Cliente cliente);
     public List<Venta> mostrarVentaPorClienteRangoFecha(Cliente cliente, Date fechaInicio, Date fechaFin);
 
     public Venta crearVenta(Venta venta);
+    public List<Venta> mostrarVentas();
 
 
 }

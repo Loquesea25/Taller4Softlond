@@ -3,7 +3,9 @@ package com.example.tienda.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-    @Entity
+import java.util.List;
+
+@Entity
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -23,6 +25,14 @@ import lombok.*;
         @ManyToOne
         @JoinColumn(name = "idCategoria")
         private Categoria idCategoria;
+
+
+        /*
+        //Prueba
+         @OneToMany(mappedBy = "producto")
+        private List<Venta> ventas;
+
+         */
 
 
     }

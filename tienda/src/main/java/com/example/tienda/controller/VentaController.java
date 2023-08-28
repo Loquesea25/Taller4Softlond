@@ -26,8 +26,20 @@ public class VentaController {
     @Autowired
     private IClienteService iClienteService;
 
-    @Value("${descuento.porcentaje}")
-    private double porcentajeDescuento;
+    @GetMapping
+    @RequestMapping(value = "mostrarVentas", method = RequestMethod.GET)
+    public ResponseEntity<List> mostrarVentas(){
+        Logger logger = LoggerFactory.getLogger(getClass());
+        try{
+            List listaVentas = this.ventaServiceIMPL.mostrarVentas();
+            return ResponseEntity.ok().body(listaVentas);
+        }catch (Exception e){
+            logger.error("Ocurrió un problema al mostrar las ventas");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.singletonList("Ocurrió un problema al mostrar las ventas"));
+        }
+    }
+
+
     @GetMapping
     @RequestMapping(value = "mostrarVentaPorFecha", method = RequestMethod.GET)
     public ResponseEntity<List> mostrarVentaPorFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {

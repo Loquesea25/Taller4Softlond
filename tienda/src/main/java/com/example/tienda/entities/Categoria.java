@@ -25,4 +25,10 @@ public class Categoria {
     NO ES NECESARIO.
      */
 
+    /*
+    //Prueba
+    @OneToMany(mappedBy = "categoria")
+    private List<Venta> ventas;
+     */
+
 }

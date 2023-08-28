@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,12 @@ public class Venta {
     @Setter(AccessLevel.NONE)
     @Column(name = "idVenta")
     private Long id;
+    @Column(name = "precio_total")
+    private BigDecimal precioTotal;
+    @Column(name = "precio_total_con_descuento")
+    private BigDecimal precioTotalConDescuento;
+    @Column(name = "nombre_producto")
+    private String nombre;
 
 
 
@@ -26,11 +33,10 @@ public class Venta {
     private Cliente cliente;
     @ManyToOne
     private Categoria categoria;
+
     @ManyToOne
-    private Producto producto;
-    @ManyToOne
-    @JoinColumn(name = "nombre")
-    private Producto nombre = this.getNombre();
+    @JoinColumn(name = "idProducto")
+    private Producto idProducto;
 
 
 

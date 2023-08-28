@@ -27,6 +27,7 @@ import java.util.List;
         private Categoria idCategoria;
 
 
+
         /*
         //Prueba
          @OneToMany(mappedBy = "producto")

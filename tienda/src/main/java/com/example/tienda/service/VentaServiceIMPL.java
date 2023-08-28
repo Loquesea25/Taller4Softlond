@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +43,33 @@ public class VentaServiceIMPL implements IVentaService{
     public List<Venta> mostrarVentas() {
         return (List<Venta>) this.iVentaRepository.findAll();
     }
+
+
+    public BigDecimal obtenerPorcentajeDescuento() {
+        return new BigDecimal("10");
+    }
+
+    @Override
+    public BigDecimal calcularTotalCompras31Dias(Long idCliente) {
+        return null;
+    }
+
+    @Override
+    public Venta procesarVenta(Venta venta) {
+        BigDecimal totalCompras31Dias = calcularTotalCompras31Dias(venta.getCliente().getIdCliente());
+
+
+        if (totalCompras31Dias.compareTo(new BigDecimal("1000000")) >= 0) {
+
+            BigDecimal porcentajeDescuento = obtenerPorcentajeDescuento();
+            BigDecimal precioConDescuento = venta.getPrecioTotal().subtract(venta.getPrecioTotal().multiply(porcentajeDescuento.divide(new BigDecimal("100"))));
+            venta.setPrecioTotalConDescuento(precioConDescuento);
+        }
+
+        return iVentaRepository.save(venta);
+    }
+
+
 
 
 }

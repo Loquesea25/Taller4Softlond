@@ -19,6 +19,8 @@ public class Categoria {
     @Column(name = "nombreCategoria")
     private String nombreCategoria;
 
+
+
     /*
     @ManyToMany(mappedBy = "idCategoria")
     private List<Producto> productos;

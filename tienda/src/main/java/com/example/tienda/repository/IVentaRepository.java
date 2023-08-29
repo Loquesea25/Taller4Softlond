@@ -12,6 +12,4 @@ public interface IVentaRepository extends JpaRepository<Venta, Long> {
 
 
 
-
-
 }

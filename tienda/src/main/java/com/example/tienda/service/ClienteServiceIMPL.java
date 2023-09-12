@@ -13,6 +13,7 @@ public class ClienteServiceIMPL implements IClienteService{
     private IClienteRepository iClienteRepository;
     @Override
     public List<Cliente> mostrarClientes() {
+
         return (List<Cliente>) this.iClienteRepository.findAll();
     }
 
@@ -24,16 +25,19 @@ public class ClienteServiceIMPL implements IClienteService{
 
     @Override
     public Cliente modificarCliente(Cliente cliente) {
+
         return this.iClienteRepository.save(cliente);
     }
 
     @Override
     public Cliente buscarClientePorId(Long id) {
+
         return this.iClienteRepository.findById(id).get();
     }
 
     @Override
     public void eliminarClientePorId(Long id) {
+
         this.iClienteRepository.deleteById(id);
     }
 }
